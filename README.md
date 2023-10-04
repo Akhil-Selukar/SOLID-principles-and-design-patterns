@@ -34,8 +34,37 @@ in place of storing the comment data in database we have mocked the data with ha
 
 if you see *[CommentController.class](https://github.com/Akhil-Selukar/SOLID-principles-and-design-patterns/blob/master/solid%20-%2001.a%20-%20single-responsibility-violation/src/main/java/com/solid/principles/controller/CommentController.java)* the 
 logic to validate the payload is implemented in the controller itself, also we are creating the comment object from JSON payload as well in the controller
-so if the validation rules changes or if the parsing mechanism changes or we changed payload from json to some other form, all this
+<br><br>
+Validation logic:
+```java
+private boolean validateComment(Comment comment) {
+        if(!isPresent(comment.getMessage())) {
+            return false;
+        }
+        if(comment.getAuthor() == null || comment.getAuthor().trim().length() == 0) {
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isPresent(String value) {
+        return value != null && value.trim().length() > 0;
+    }
+```
+<br>
+Creating object from JSON payload:
+
+```java
+ObjectMapper mapper = new ObjectMapper();
+Comment comment = mapper.readValue(payloadJson, Comment.class);
+```
+
+so if the validation rules changes or if the parsing mechanism changes, or we changed payload from json to some other form, all this
 scenarios will cause changes in controller class. Means controller class has more than one responsibility which is violating the 
-single responsibility principle.
+single responsibility principle. Ideally responsibility of controller must br to rout the request to appropriate service/business logic in service layer.<br><br>
 
-
+Now, consider the code in '[solid - 01.b - single-responsibility-compliant](https://github.com/Akhil-Selukar/SOLID-principles-and-design-patterns/tree/master/solid%20-%2001.b%20-%20single-responsibility-compliant)' project.
+Here controller class only is routing the request to the service layer, service layer has only business logic, 
+validation logic is transferred to the util package (PayloadValidator.class) and repository class only have one responsibility 
+to store data in database. Here each and every layer or class is focused on only one functionality and if anything changes 
+then we can specifically change the code inside respective class.
