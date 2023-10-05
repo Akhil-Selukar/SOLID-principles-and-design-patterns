@@ -71,7 +71,7 @@ validation logic is transferred to the util package (PayloadValidator.class) and
 to store data in database. Here each and every layer or class is focused on only one functionality and if anything changes 
 then we can specifically change the code inside respective class.
 
-### 1. Open close principle
+### 2. Open close principle
 **Definition :** Open close principle states that the software entities like method, class or modules should be open for 
 extension but close for modification.<br>
 In simple word it means if we have a base class completely working and tested then we should be able to extend that class
