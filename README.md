@@ -10,6 +10,8 @@
 </ol>
 
 *Note: There are not the only design principles you need to know, but these are one of the most important ones.*
+<br><br>
+**The example code mentioned in respective sections below or in the repository are just to explain the concepts, they might not follow proper coding structure or the best practice.*
 <hr>
 
 ### 1. Single responsibility principle
@@ -68,3 +70,21 @@ Here controller class only is routing the request to the service layer, service 
 validation logic is transferred to the util package (PayloadValidator.class) and repository class only have one responsibility 
 to store data in database. Here each and every layer or class is focused on only one functionality and if anything changes 
 then we can specifically change the code inside respective class.
+
+### 1. Open close principle
+**Definition :** Open close principle states that the software entities like method, class or modules should be open for 
+extension but close for modification.<br>
+In simple word it means if we have a base class completely working and tested then we should be able to extend that class
+to add new behaviors or override the methods (i.e. open for extension), but we must not modify the code written in base 
+class because that is already tested and working. By changing base class code we might break some other functionality.
+<br>
+
+The code present in '[solid - 02.a - open-close-violation](https://github.com/Akhil-Selukar/SOLID-principles-and-design-patterns/tree/master/solid%2002.a%20-%20open-close-violation)'
+describes the code which violates the open close principle. Here for both Tata Nexon and Honda Activa we have declared engine type, seating capacity,
+number of wheels and showroom price, also we have a method to calculate on road price for both of them. 
+Those methods have their own implementation. Here we can clearly see that we are repeating most of the code so what 
+we can do is crete a base class which has all the above-mentioned property and add an abstract method to calculate on road price
+as shown in '[solid - 02.b - open-close-compliant](https://github.com/Akhil-Selukar/SOLID-principles-and-design-patterns/tree/master/solid%2002.b%20-%20open-close-compliant)'
+By this what we are doing is we have our base class which can be extended by another classes and add extra fields or 
+functionalities, meaning open for extension. But at the same time we don't have to change the base class to add any other vehicle, meaning 
+the base class is not closed for modification.
