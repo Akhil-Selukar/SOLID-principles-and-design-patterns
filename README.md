@@ -89,3 +89,66 @@ By this what we are doing is we have our base class which can be extended by ano
 functionalities, meaning open for extension. But at the same time we don't have to change the base class to add any other vehicle, meaning 
 the base class is not closed for modification. Here the abstract method is the way for extension of base class.
 
+### 3. Liskov substitution principle
+**Definition :** Liskov substitution principle states that we should be able to use subclass or child class object wherever base class object is expected.
+And this substitution should not alter desired properties/behaviour of the program.<br>
+For an example in simple words, if we have a base class and it is providing us 'xyz' behaviour. Now we replace the object of base class
+with an object of child class or subclass, by this substitution the 'xyz' feature must not be changed.<br>
+
+The code present in '[solid - 03.a - liskov-substitution-violation](https://github.com/Akhil-Selukar/SOLID-principles-and-design-patterns/tree/master/solid%2003.a%20-%20liskov-substitution-violation)'
+shows the violation of liskov substitution principle. Here we have two classes 'Square.class' and 'Rectangle.class' and we can 
+say that square is a special type of rectangle where height and width is always equal. Hence, irrespective of what we are
+ setting (height or width) for square we are internally making sure that at all the time both must be equal (by using setSide() method) 
+```java
+public class Square extends Rectangle{
+
+    public Square(int side) {
+        super(side, side);
+    }
+
+    public void setWidth(int width) {
+        setSide(width);                     // call to setSide() method
+    }
+
+    public void setHeight(int height) {
+        setSide(height);                    // call to setSide() method
+    }
+
+    private void setSide(int side) {
+        super.setWidth(side);               // ensuring all side are same alway
+        super.setHeight(side);
+    }
+}
+```
+
+As 'Square.class' is extending 'Rectangle.class' hence we will be able to call the calculateArea() method which is defined
+in 'Rectangle.class' for square object as-well, and eventually it will return square of side (because height and width are equal)<br>
+
+Now, let's see the method 'useRectangle()' below.
+```java
+private static void useRectangle(Rectangle rectangle) {
+        rectangle.setWidth(10);
+        rectangle.setHeight(20);
+
+        if(rectangle.getHeight() == 20)
+            System.out.println("Height of rectangle is 20.");
+        else
+            System.out.println("Height is not 20.");
+        if(rectangle.getWidth() == 10)
+            System.out.println("Width of rectangle is 10.");
+        else
+            System.out.println("Width is not 10.");
+    }
+```
+Here we are receiving the object of 'Rectangle' class and as Square is a subclass of rectangle the method will work for 
+object of square as well. But when we call the method for any object of Square, it will set width to 10 which will result 
+in all sides of square being set to 10 because of setSide() method in square class. And when ```rectangle.setHeight(20);```
+will get executed it will set all sides of the square to 20, so the second if block will become false for square object, 
+and it will be true for rectangle. Which violates the Liskov substitution principle because by replacing the base class 
+object with parent class the behaviour gets changed.<br>
+
+To make this compliant ([solid - 03.b - liskov-substitution-compliant](https://github.com/Akhil-Selukar/SOLID-principles-and-design-patterns/tree/master/solid%2003.b%20-%20liskov-substitution-compliant)) what we did is we created an interface called 'Shape' having calculateArea() method and implemented 
+that interface to both Square and Rectangle. So that it will be clear that Rectangle and Square both are shape but one is 
+not related to other, and we can't assume that the square is a special type of rectangle and apply same properties as that 
+of rectangle to square. By implementing the interface 'Shape' we are ensuring that both the classes provide the implementation 
+for calculateArea() method and have area calculation functionality.
