@@ -87,4 +87,5 @@ we can do is crete a base class which has all the above-mentioned property and a
 as shown in '[solid - 02.b - open-close-compliant](https://github.com/Akhil-Selukar/SOLID-principles-and-design-patterns/tree/master/solid%2002.b%20-%20open-close-compliant)'
 By this what we are doing is we have our base class which can be extended by another classes and add extra fields or 
 functionalities, meaning open for extension. But at the same time we don't have to change the base class to add any other vehicle, meaning 
-the base class is not closed for modification.
+the base class is not closed for modification. Here the abstract method is the way for extension of base class.
+

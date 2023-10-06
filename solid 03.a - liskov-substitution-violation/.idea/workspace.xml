@@ -4,19 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f669a3db-d442-47a5-b647-75aea84997a8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../solid 03.a - liskov-substitution-violation/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../solid 03.a - liskov-substitution-violation/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../solid 03.a - liskov-substitution-violation/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../solid 03.a - liskov-substitution-violation/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../solid 03.a - liskov-substitution-violation/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../solid 03.a - liskov-substitution-violation/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../solid 03.a - liskov-substitution-violation/solid 03.a - liskov-substitution-violation.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../solid 03.a - liskov-substitution-violation/src/main/java/com/solid/principles/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../solid 03.a - liskov-substitution-violation/src/main/java/com/solid/principles/Rectangle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../solid 03.a - liskov-substitution-violation/src/main/java/com/solid/principles/Square.java" afterDir="false" />
+    <list default="true" id="ad46ffcc-91eb-4cb8-aa9b-8cdea503e491" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/solid 03.a - liskov-substitution-violation.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/solid/principles/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/solid/principles/Rectangle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/solid/principles/Square.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../solid 03.b - liskov-substitution-compliant/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../solid 03.b - liskov-substitution-compliant/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../solid 03.b - liskov-substitution-compliant/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../solid 03.b - liskov-substitution-compliant/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../solid 03.b - liskov-substitution-compliant/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../solid 03.b - liskov-substitution-compliant/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../solid 03.b - liskov-substitution-compliant/solid 03.b - liskov-substitution-compliant.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../solid 03.b - liskov-substitution-compliant/src/main/java/com/solid/principles/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../solid 03.b - liskov-substitution-compliant/src/main/java/com/solid/principles/Rectangle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../solid 03.b - liskov-substitution-compliant/src/main/java/com/solid/principles/Shape.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../solid 03.b - liskov-substitution-compliant/src/main/java/com/solid/principles/Square.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../solid 02.a - open-close-violation/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../solid 02.a - open-close-violation/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../solid 02.a - open-close-violation/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../solid 02.a - open-close-violation/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../solid 02.a - open-close-violation/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../solid 02.a - open-close-violation/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../solid 02.b - open-close-compliant/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../solid 02.b - open-close-compliant/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../solid 02.b - open-close-compliant/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../solid 02.b - open-close-compliant/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
     </list>
@@ -38,7 +51,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2WL6grAK2zTTkjAbnHNV0rkV2DK" />
+  <component name="ProjectId" id="2WO6CLZujaPN2LjExDww6Q9JEe6" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -56,7 +69,7 @@
       <option name="appName" />
       <option name="appServicePlanName" />
       <option name="appServicePlanResourceGroup" />
-      <option name="appSettingsKey" value="b37e8914-4f58-4621-b74a-e7f7badb1341" />
+      <option name="appSettingsKey" value="2f1165c7-4afd-4456-9368-e99834fe27f7" />
       <option name="artifact" />
       <option name="autoPort" value="true" />
       <option name="debugOptions" />
@@ -87,11 +100,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f669a3db-d442-47a5-b647-75aea84997a8" name="Changes" comment="" />
-      <created>1696499631062</created>
+      <changelist id="ad46ffcc-91eb-4cb8-aa9b-8cdea503e491" name="Changes" comment="" />
+      <created>1696591154176</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1696499631062</updated>
+      <updated>1696591154176</updated>
     </task>
     <servers />
   </component>
