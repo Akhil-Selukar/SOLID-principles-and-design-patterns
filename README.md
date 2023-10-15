@@ -152,3 +152,61 @@ that interface to both Square and Rectangle. So that it will be clear that Recta
 not related to other, and we can't assume that the square is a special type of rectangle and apply same properties as that 
 of rectangle to square. By implementing the interface 'Shape' we are ensuring that both the classes provide the implementation 
 for calculateArea() method and have area calculation functionality.
+
+
+### 4. Interface segregation principle
+**Definition :** Client must not be forced to depend upon the interfaces (methods defined in the interfaces) that they don't use.
+
+**Import term :**
+<br> **Interface pollution :** interface pollution means we must not create the interface bigger, i.e. we should not add methods
+which are not related and create a huge interface and make all the classes implement that interface and force them to 
+implement the unrelated methods.
+<br> It is very easy to identify interface pollution.
+<ul>
+<li>If any class implementing the interface has empty method.</li>
+<li>Method implementation throws UnsupportedOperationException or similar kind of exception.</li>
+<li>Method implementation returns null, default value or dummy value.</li>
+</ul>
+If any of the above scenario is true, then the interface segregation principle is violated.
+
+So in simple words what this principle tells us is, our interfaces must be segregated so that the class need not have to 
+implement methods which are not related to that class.
+
+Code in folder '[solid 04.a - interface-segregation-violation](https://github.com/Akhil-Selukar/SOLID-principles-and-design-patterns/tree/master/solid%2004.a%20-%20interface-ssegregation-violation)' 
+shows the violation of this principle. In this code we can clearly see that Cat and Fish both the classes implements single
+interface 'Action' and because of this both Cat and Fish has to override all the methods in Action interface. Now as we 
+know fish can't walk, but still as Fish class is implementing interface Action we have to override walk method in it.
+This is where Fish class became dependent on the method which is not at all related to it and this violates the interface 
+segregation principle.
+```java
+public class Fish implements Action{
+    @Override
+    public String walk() {
+        throw new UnsupportedOperationException("This operation is not supported by fish.");
+    }
+
+    @Override
+    public String makeSound() {
+        throw new UnsupportedOperationException("This operation is not supported by fat.");
+    }
+
+    @Override
+    public String eat() {
+        return "Fish is eating her food!";
+    }
+
+    @Override
+    public String swim() {
+        return "The fish is swimming really fast!";
+    }
+}
+```
+in above class we can clearly see that Fish class is forced to override walk() and makeSound() method which is not related to 
+that class hence we can say that the interface Action is polluted.
+
+<br>Now if we see code in folder '[solid 04.b - interface-segregation-compliant](https://github.com/Akhil-Selukar/SOLID-principles-and-design-patterns/tree/master/solid%2004.b%20-%20interface-segregation-compliant)'
+, here we have two different interfaces 'AquaticAnimalActions' which is implemented by Fish class and another is 'TerrestrialAnimalActions'
+which is implemented by Cat class. Here both the interfaces has methods related to specific type of animals.
+In future if we want to add Dog class which is similar to Cat type then we can use TerrestrialAnimalActions interface and 
+If we want to add class like Octopus then we can use AquaticAnimalActions interface, here we are not forcing any class to 
+override method which is not related to that class.
