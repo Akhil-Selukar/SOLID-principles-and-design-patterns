@@ -1,0 +1,1 @@
+{"msg":"This is new message!","timestamp":{"year":2023,"monthValue":10,"dayOfMonth":15,"hour":17,"minute":54,"second":58,"nano":54705200,"dayOfWeek":"SUNDAY","dayOfYear":288,"month":"OCTOBER","chronology":{"id":"ISO","calendarType":"iso8601"}}}
