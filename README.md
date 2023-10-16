@@ -210,3 +210,76 @@ which is implemented by Cat class. Here both the interfaces has methods related 
 In future if we want to add Dog class which is similar to Cat type then we can use TerrestrialAnimalActions interface and 
 If we want to add class like Octopus then we can use AquaticAnimalActions interface, here we are not forcing any class to 
 override method which is not related to that class.
+
+
+### 5. Dependency inversion principle
+**Import term :**
+
+**Dependency inversion :** Dependency inversion in simple terms means that instead of instantiating dependencies ourselves, 
+let somebody else (i.e. client or calling code) instantiate it and give it to us.(i.e. server or business logic handling part).
+
+**High level module :** High level module basically means a module that provides or implements some business logic or rule.
+
+**Low level module :** Low level module is a functionality that is so simple and basic that it can be used anywhere. For example
+writing to disk is a functionality that can be used anywhere, so it is a low level functionality or module.
+
+**Definition :** 
+<ol>
+<li type="a">High level module should not depend upon low level module, both should depend upon the abstraction.</li>
+<li type="a">Abstraction should not depend upon details, details should depend upon abstraction.</li>
+</ol>
+
+To understand this principle better, check the code violating this principle available in folder 
+'[solid 05.a - dependency-inverssion-violation](https://github.com/Akhil-Selukar/SOLID-principles-and-design-patterns/tree/master/solid%2005.a%20-%20dependency-inverssion-violation)' 
+<br>Here, have a look at below piece of code
+```java
+public class MessagePrinter {
+    public void writeMessage(Message message, String fileName)throws IOException{
+        Formatter formatter = new JSONFormatter();
+        try(PrintWriter writer = new PrintWriter(new FileWriter(fileName))){
+            writer.println(formatter.format(message));
+            writer.flush();
+        }
+    }
+}
+```
+This code is dependent upon the ``formatter`` object and ``writer`` object, i.e. the dependencies for the method writeMessage
+are Formatter object and PrintWriter object. If we want to write the message in xml format or instead of writing the message
+in file if we want to write it on console, in this case we need to change the writeMessage method, or in other words the 
+writeMessage method is tightly coupled with the formatter and printWriter.<br>
+As per first part of the definition of this principle ``High level module should not depend upon low level module, both 
+should depend upon the abstraction.``. But in given example, writeMessage method or MessagePrinter class i.e. high level 
+module is tightly coupled with/dependent on formatter and writer i.e. the Low lever modules. So the dependency inversion 
+principle is violated here.
+<br><br>Now consider the code in folder '[solid 05.b - dependency-inversion-compliant](https://github.com/Akhil-Selukar/SOLID-principles-and-design-patterns/tree/master/solid%2005.b%20-%20dependency-inversion-compliant)'
+here both the dependencies are transferred to the client side or the calling side and the high level code i.e. writeMessage method
+or MessagePrinter class is not tightly coupled with low level class. (refer below code)
+```java
+public class MessagePrinter {
+    public void writeMessage(Message message, Formatter formatter, PrintWriter writer)throws IOException{
+            writer.println(formatter.format(message));
+            writer.flush();
+    }
+}
+```
+Here whatever implementation we pass for the dependencies writeMessage will act accordingly.
+Here Formatter interface act as a abstraction and the modules depends on that abstraction, means if we pass different implementation
+for Formatter interface to parse the message in XML format then same writeMessage method will work and convert the message 
+in XML format, if we pass implementation of Formatter interface to convert message in text format writeMessage will work that way.
+Similarly, if we pass object ``System.out`` instead of ``FileWriter`` the same messagePrinter method will write the message 
+in console instead of text file.(refer below code) 
+```java
+public class Main {
+    public static void main(String[] args) throws IOException {
+        Message msg = new Message("This is new message!");
+        MessagePrinter printer = new MessagePrinter();
+        try(PrintWriter writer = new PrintWriter(System.out)){
+            printer.writeMessage(msg, new JSONFormatter(), writer);
+        }
+    }
+}
+```
+So here the dependency creation process is inverted i.e. instead of creating the instance of 
+dependencies in actual business logic or actual code we have transferred the dependency initialization part to client or 
+calling side.
+
