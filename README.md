@@ -14,6 +14,8 @@
 **The example code mentioned in respective sections below or in the repository are just to explain the concepts, they might not follow proper coding structure or the best practice.*
 <hr>
 
+## SOLID - Principles
+
 ### 1. Single responsibility principle
 **Definition :** Single responsibility principle tells us that there should never be more than one reason for a class to change.<br>
 In simple word, a class must provide very focused functionality, or it should address a very specific concern of the desired functionality.<br>
@@ -282,4 +284,35 @@ public class Main {
 So here the dependency creation process is inverted i.e. instead of creating the instance of 
 dependencies in actual business logic or actual code we have transferred the dependency initialization part to client or 
 calling side.
+<hr>
+
+## Design patterns
+
+There are more than 20 design patterns present in java and those are divided into three categories based on the type of 
+problems they solve.
+<ol>
+<li><strong>Creational design patterns :</strong> These design patterns deals with the process of creating object of a class.
+They gives solutions to the common problems we might face while creating objects from a class.</li>
+<li><strong>Structural design patterns :</strong> These design patterns deals with how classes and objects are arranged and composed.</li>
+<li><strong>Behavioral design patterns :</strong> These design patterns deals with how classes and objects interact or 
+communicate with each other.</li>
+</ol>
+
+### 1. Creational design patterns
+#### Why we need design patterns to create an object, can't we just use ``new`` keyword and create the object?
+Yes, we have to use ``new`` keyword to create an object in java language. But there might be certain scenarios while building 
+real world applications where we need to ensure that throughout the application there must be only one object present of 
+specific class(like configuration class, so that throughout the application all configuration values must be fetched from 
+that object only.), or some other objects must be created before creating object of specific class,or we may need to read 
+some data files of query some database before creating specific object. So these are some problems which creational design 
+patterns solves. Below are the creational design patterns.
+<ul>
+<li>Builder</li>
+<li>Simple factory</li>
+<li>Factory method</li>
+<li>Prototype</li>
+<li>Singleton</li>
+<li>Abstract factory</li>
+<li>Object pool</li>
+</ul>
 
