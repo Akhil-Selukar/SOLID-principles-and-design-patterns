@@ -287,16 +287,16 @@ calling side.
 <hr>
 
 ## Design patterns
+### What's a design pattern?
+Design patterns are typical solutions to commonly occurring problems in software design. They are like pre-made blueprints 
+that you can customize to solve a recurring design problem in your code. <br>
+design patterns are not some specific piece of code, but general concept for solving a particular problem. You can follow the 
+pattern details and implement a solution that suits your program and your architecture.
 
-There are more than 20 design patterns present in java and those are divided into three categories based on the type of 
-problems they solve.
-<ol>
-<li><strong>Creational design patterns :</strong> These design patterns deals with the process of creating object of a class.
-They gives solutions to the common problems we might face while creating objects from a class.</li>
-<li><strong>Structural design patterns :</strong> These design patterns deals with how classes and objects are arranged and composed.</li>
-<li><strong>Behavioral design patterns :</strong> These design patterns deals with how classes and objects interact or 
-communicate with each other.</li>
-</ol>
+### Difference between design patterns and algorithms
+Design patterns are often confused with algorithms because both concepts describe typical solutions to some known problems.
+While an algorithm always defines a clear set of actions that can achieve some goal, a pattern is a more high-level 
+description of a solution. The code of the same pattern applied to two different programs may be different. 
 
 ### 1. Creational design patterns
 #### Why we need design patterns to create an object, can't we just use ``new`` keyword and create the object?
@@ -315,4 +315,44 @@ patterns solves. Below are the creational design patterns.
 <li>Abstract factory</li>
 <li>Object pool</li>
 </ul>
+
+### Builder
+Builder is a creational design pattern using which we can create complex objects step by step. The pattern allows us to 
+produce different types and representations of an object using the same construction code. This design pattern is typically 
+used when we need to create an object with lots of possible configuration options.
+
+
+Imagine you are writing a code for pizza creation. Basically each and every pizza will have a base, sauces, cheese and 
+different toppings. Now you can create multiple kinds of pizzas by having different combinations of all the ingredients.
+For example, margherita pizza will have pizza base, margherita sauce and cheese and there won't be any topping over it, 
+whereas onion pizza will have base, sauces, cheese and onion as topping, and Veg loaded will have capsicum, mushroom, 
+tomatoes, corn and black olives along with onion as toppings. pizzas can be cheese burst, thin crust, fresh pan pizza, etc.
+So the construction of pizza object is a complex task involving multiple fields and even nested objects in some cases.<br>
+Now there can be two ways in which we can achieve this. The first one is to extend the base pizza class and create a set 
+of all possible subclasses for different type of pizzas. This will lead you to generate huge number of classes and maintaining 
+those many number of classes is not an easy task, also any new addition of topping or sauce or base will lead to change in 
+huge number of classes and creation of additional classes as well.<br>
+The second approach is to create a huge constructor and pass all those fields which you don't want as ``null``. But in this 
+case there is a good chance that more than 90% of the time most of the fields will be null, and while passing that many 
+number of parameters to the constructor it is most likely possible that we might miss some parameter or pass wrong value.
+Hence, this approach is also not the best solution for the problem.<br>
+
+To solve this problem, builder pattern suggest to extract object creation code out of the class and move it to separate 
+objects called builder. This builders will create complex object for us step by step.<br>
+The pattern organizes object construction into a set of steps like addBase(), addSauce(), addCheese(), addOnion(), addTomatoes(),
+etc. To create an object we execute a series of these steps on builder object and the best part here is we do not need to 
+call all the steps, we can call only those steps which are need to create a specific object.<br> 
+Also construction steps can have different implementation. For example, we want to create custom pizza boxes on which we want 
+a label which describes the pizza inside. so we can create a different builder implementation for creating pizza boxes.<br>
+We can further extract the series of calls to the builder steps into a separate class called ``director``. The 'director' 
+provides the steps to call to create a specific type of object while builder provides implementation to those steps.
+
+<em>Note:</em> Having director is not always necessary, we can directly call steps of builder in specific order from client 
+to create object of that type. But having director is good as we can have different object creation mechanism at one place 
+and reuse them throughout the code, also director class hides the details of object creation steps from the client code. 
+
+![img.png](images/builder.png)
+
+
+
 
