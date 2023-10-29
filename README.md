@@ -316,7 +316,7 @@ patterns solves. Below are the creational design patterns.
 <li>Object pool</li>
 </ul>
 
-### Builder
+### i. Builder
 Builder is a creational design pattern using which we can create complex objects step by step. The pattern allows us to 
 produce different types and representations of an object using the same construction code. This design pattern is typically 
 used when we need to create an object with lots of possible configuration options.
@@ -352,7 +352,38 @@ to create object of that type. But having director is good as we can have differ
 and reuse them throughout the code, also director class hides the details of object creation steps from the client code. 
 
 ![img.png](images/builder.png)
+<hr>
 
+### ii. Simple Factory
+Simple factory is a very simple design pattern we just put object creation mechanism in a separate class and based on some
+criteria we create and return the object of specific type. To understand this better consider example for simple factory design 
+pattern [design 07 - simple-factory](https://github.com/Akhil-Selukar/SOLID-principles-and-design-patterns/tree/master/design%2007%20-%20simple-factory).<br>
+In this example we can see we have a simple factory method which accepts the type of drink and based on that return the 
+respective object.
+
+```java
+public static Drink generateDrink(String type){
+        switch(type){
+            case "CocaCola":
+                return new CocaCola("Dark Brown", true, "Sweet", "CocaCola", 35.00F);
+            case "Sprite":
+                return new Sprite("Colorless", true, "Sweet", "Sprite", 32.50F);
+            case "OrangeJuice":
+                return new OrangeJuice("Orange", false, "Sweet", "Slice", 30.00F);
+            default:
+                throw new IllegalArgumentException("Unknown drink type.");
+        }
+    }
+```
+
+From client, we call the static method ``geerateDrink`` and send the type of drink and the method return the respective drink
+object.
+
+![img.png](images/simple-factory.png)
+
+*Note: Many people does not consider simple factory as a design pattern because it is just an encapsulation of object 
+creation logic. We simply take the instance creation logic and put it in a separate class under a static method.* 
+<hr>
 
 
 
