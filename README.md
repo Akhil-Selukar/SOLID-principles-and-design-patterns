@@ -386,5 +386,51 @@ creation logic. We simply take the instance creation logic and put it in a separ
 <hr>
 
 ### iii. Factory Method
+It is a creational design pattern that provides an interface for creating objects in a superclass, but allows 
+subclasses to alter the type of objects that will be created.<br>
 
+Imagine you have a toy factory management application and your factory creates 'Honda Activa' toy vehicle.
+After few months your toys became popular, so now you want to add new toy 'Tesla modelX'. At present most of the Factory 
+management application coupled with ``HondaActiva`` class, so adding another class ``TeslaModelX`` will involve changing 
+a lot of code and just think of adding few more type of vehicles down the line. You might need to make all the changes again 
+and again which will lead to a very huge and tightly coupled code with lots of if else, switch and other kind of conditions 
+everywhere in the code.<br>
 
+This is the exact problem which factory method design pattern solves. This pattern suggests that you replace direct object 
+creation calls with call to a special factory method which will internally call the ``new`` operator to create an object
+(these objects are often called as 'products').
+
+At first glance, this change may look pointless: we just moved the constructor call from one part of the program to another. 
+However, consider this: now you can override the factory method in a subclass and change the class of products being 
+created by the method. (There’s a slight limitation though: subclasses may return different types of products only if 
+these products have a common base class or interface. Also, the factory method in the base class should have its
+return type declared as this interface.)
+
+To understand this design pattern better look at the example '[design 08 - factory-method](https://github.com/Akhil-Selukar/SOLID-principles-and-design-patterns/tree/master/design%2008%20-%20factory-method)'
+Here we have two vehicles of which we want to create objects, 'Honda Activa' and 'Tesla ModelX' and both implements a 
+common interface ``Vehicle``. Now instead of creating the object of each class directly in the main method (i.e. client)
+we have created a factory i.e. abstract class ``VehicleFactory`` with an abstract method ``manufactureVehicle``. The definition
+of this abstract method is written in the individual factory class for both the vehicles, and it returns the object of 
+that vehicle. 
+
+Now in main class instead of creating object of the vehicle everywhere we just use the factory of that specific vehicle or 
+we configure the factory based on the object we want and call the create() method of that factory. Now if we observe the code 
+of ``VehicleFactory`` class
+
+```java
+public abstract class VehicleFactory {
+    public Vehicle create(){
+        Vehicle vehicle = manufactureVehicle();
+        vehicle.assemble();
+        return vehicle;
+    }
+
+    protected abstract Vehicle manufactureVehicle();
+}
+```
+
+Here we can see that create method is calling the abstract method ``manufactureVehicle()`` which will return the object of 
+specific vehicle based on which factory we are using to call the create() method. Create method returns that created object 
+back to the client. (The assemble() method is optional processing on object we can do before handing it over to the client.)
+
+![img.png](images/factory-method.png)
